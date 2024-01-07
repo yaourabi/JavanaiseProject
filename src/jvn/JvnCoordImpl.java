@@ -98,10 +98,10 @@ public class JvnCoordImpl extends UnicastRemoteObject implements JvnRemoteCoord 
      * @param js : the remote reference of the JVNServer
      **/
     public synchronized JvnObject jvnLookupObject(String jon, JvnRemoteServer js) throws RemoteException, JvnException, InterruptedException {
-        JvnObject cachedObject = jvnObjectTable.get(jon);
-        if (cachedObject != null) {
+        JvnObject jvnObject = jvnObjectTable.get(jon);
+        if (jvnObject != null) {
             System.out.println("Object found in cache. Returning cached object.");
-            return cachedObject;
+            return jvnObject;
         }
         System.out.println("Object not found in cache. Retrieving from the server.");
         if (this.jvnObjectIdTable.get(jon) != null) {
